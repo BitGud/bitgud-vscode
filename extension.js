@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
+var axios = require('axios');
 
 let linenumbersVisited = [];
 
@@ -29,7 +30,28 @@ async function activate(context) {
 	console.log('Congratulations, your extension "bitgud" is now active!');
 
 	const disposable1 = vscode.commands.registerCommand('bitgud.authenticate', async () => {
-		vscode.env.openExternal(vscode.Uri.parse("https://github.com/login/oauth/authorize?client_id=b934ff3ad4a8f26393fb"));
+		vscode.env.openExternal(vscode.Uri.parse("https://github.com/login/oauth/authorize?client_id=a963600a57e241817430"));
+
+        var app = express();
+
+        app.get('/', async function(req, res) {
+            res.send('<script>window.close();</script>');
+            console.log(req.query.code);
+
+            axios.post('172.20.10.146:4000/code', {
+                code: req.query.code,
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+        });
+
+        app.listen(2000);
+        console.log('Express working...');
 	});
 
 	// The command has been defined in the package.json file

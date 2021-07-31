@@ -27,23 +27,23 @@
       }
     ],
     "viewsContainers": {
-        "activitybar": [
-            {
-                "id": "bitgud-container",
-                "title": "Bitgud",
-                "icon": "BitGud.svg"
-            }
-        ]
+      "activitybar": [
+        {
+          "id": "bitgud-container",
+          "title": "Bitgud",
+          "icon": "BitGud.svg"
+        }
+      ]
     },
     "views": {
-        "bitgud-container": [
+      "bitgud-container": [
         {
-            "id": "bitgud-view",
-            "name": "BitGud",
-            "icon": "BitGud.svg",
-            "contextualTitle": "LogIn"
+          "id": "bitgud-view",
+          "name": "BitGud",
+          "icon": "BitGud.svg",
+          "contextualTitle": "LogIn"
         }
-        ]
+      ]
     }
   },
   "scripts": {
@@ -63,6 +63,8 @@
     "vscode-test": "^1.5.2"
   },
   "dependencies": {
-    "@octokit/rest": "^18.7.2"
+    "@octokit/rest": "^18.7.2",
+    "axios": "^0.21.1",
+    "express": "^4.17.1"
   }
 }
