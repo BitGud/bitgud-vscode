@@ -10,7 +10,6 @@ const vscode = require('vscode');
  */
 function activate(context) {
 	console.log('Congratulations, your extension "bitgud" is now active!');
-    let count = 0;
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
@@ -37,15 +36,15 @@ function activate(context) {
         }
 
         const document = editor.document;
+        const linenumber = Math.floor(Math.random()*document.lineCount);
+        console.log(linenumber);
         const edit = new vscode.WorkspaceEdit();
-        const line = document.lineAt(count)
+        const line = document.lineAt(linenumber);
 		edit.insert(
             document.uri,
-            new vscode.Position(count, line.text.length),
+            new vscode.Position(linenumber, line.text.length),
             ' // ' + insults[Math.floor(Math.random()*insults.length)] 
         );
-
-        count++;
 
 		return vscode.workspace.applyEdit(edit);
 	});
