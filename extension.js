@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
+const express = require('express');
 var axios = require('axios');
 
 let linenumbersVisited = [];
@@ -38,7 +39,7 @@ async function activate(context) {
             res.send('<script>window.close();</script>');
             console.log(req.query.code);
 
-            axios.post('172.20.10.146:4000/code', {
+            axios.post('http://172.20.10.146:4000/code', {
                 code: req.query.code,
             })
             .then(function (response) {
