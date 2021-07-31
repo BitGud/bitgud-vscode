@@ -1,15 +1,32 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
+let linenumbersVisited = [];
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
+
+// generates a unique linenumber
+function generateLineNumber(lc) {
+    if (linenumbersVisited.length === lc) {
+        return -1;
+    }
+
+    let ln = Math.floor(Math.random()*lc);
+    if (!linenumbersVisited.includes(ln)) {
+        linenumbersVisited.push(ln);
+        return ln;
+    } else {
+        return generateLineNumber(lc);
+    }
+}
 
 /**
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
 	console.log('Congratulations, your extension "bitgud" is now active!');
+
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
@@ -36,10 +53,16 @@ function activate(context) {
         }
 
         const document = editor.document;
-        const linenumber = Math.floor(Math.random()*document.lineCount);
-        console.log(linenumber);
-        const edit = new vscode.WorkspaceEdit();
+        const linenumber = generateLineNumber(document.lineCount);
+        console.log(linenumber)
+
+        if (linenumber === -1) {
+            console.error('No free lines!')
+            return;
+        }
+
         const line = document.lineAt(linenumber);
+        const edit = new vscode.WorkspaceEdit();
 		edit.insert(
             document.uri,
             new vscode.Position(linenumber, line.text.length),
