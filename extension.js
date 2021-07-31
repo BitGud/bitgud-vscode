@@ -9,9 +9,6 @@ const vscode = require('vscode');
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "bitgud" is now active!');
 
 	// The command has been defined in the package.json file
@@ -35,14 +32,12 @@ function activate(context) {
 
         const document = editor.document;
         const edit = new vscode.WorkspaceEdit();
-
-		// Just replace the entire document every time for this example extension.
-		// A more complete extension should compute minimal edits instead.
-		edit.replace(
-			document.uri,
-			new vscode.Range(0, 0, document.lineCount, 0),
-            insults[Math.floor(Math.random()*insults.length)]
+		edit.insert(
+            document.uri,
+            new vscode.Position(0, 0),
+            '// ' + insults[Math.floor(Math.random()*insults.length)] + '\n'
         );
+
 
 		return vscode.workspace.applyEdit(edit);
 	});
@@ -51,7 +46,9 @@ function activate(context) {
 }
 
 // this method is called when your extension is deactivated
-function deactivate() {}
+function deactivate() {
+    console.error('NOOOOOOO');
+}
 
 module.exports = {
 	activate,
