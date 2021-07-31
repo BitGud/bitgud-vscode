@@ -1,6 +1,8 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
+const credentialsModule = require('./credentials');
+
 let linenumbersVisited = [];
 
 // this method is called when your extension is activated
@@ -24,14 +26,17 @@ function generateLineNumber(lc) {
 /**
  * @param {vscode.ExtensionContext} context
  */
-function activate(context) {
+async function activate(context) {
 	console.log('Congratulations, your extension "bitgud" is now active!');
 
+	const disposable1 = vscode.commands.registerCommand('bitgud.authenticate', async () => {
+		vscode.env.openExternal(vscode.Uri.parse("https://github.com/login/oauth/authorize?client_id=9104722e22685c527526"));
+	});
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('bitgud.insult', function () {
+	let disposable2 = vscode.commands.registerCommand('bitgud.insult', function () {
 		// The code you place here will be executed every time your command is executed
 
         const editor = vscode.window.activeTextEditor;
@@ -43,7 +48,7 @@ function activate(context) {
             'N00b',
             '/dev/null',
             'STFU()',
-            'Cringe ();',
+            'Cringe();',
             'u.canSuckIt = true;'
         ]
 
@@ -72,7 +77,8 @@ function activate(context) {
 		return vscode.workspace.applyEdit(edit);
 	});
 
-	context.subscriptions.push(disposable);
+	context.subscriptions.push(disposable1);
+	context.subscriptions.push(disposable2);
 }
 
 // this method is called when your extension is deactivated

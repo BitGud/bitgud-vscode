@@ -10,7 +10,9 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:bitgud.insult"
+    "onCommand:bitgud.insult",
+    "onCommand:bitgud.authenticate",
+    "onView:bitgud-view"
   ],
   "main": "./extension.js",
   "contributes": {
@@ -18,8 +20,31 @@
       {
         "command": "bitgud.insult",
         "title": "Insult"
+      },
+      {
+        "command": "bitgud.authenticate",
+        "title": "Auth"
       }
-    ]
+    ],
+    "viewsContainers": {
+        "activitybar": [
+            {
+                "id": "bitgud-container",
+                "title": "Bitgud",
+                "icon": "BitGud.svg"
+            }
+        ]
+    },
+    "views": {
+        "bitgud-container": [
+        {
+            "id": "bitgud-view",
+            "name": "BitGud",
+            "icon": "BitGud.svg",
+            "contextualTitle": "LogIn"
+        }
+        ]
+    }
   },
   "scripts": {
     "lint": "eslint .",
@@ -36,5 +61,8 @@
     "mocha": "^8.4.0",
     "typescript": "^4.3.2",
     "vscode-test": "^1.5.2"
+  },
+  "dependencies": {
+    "@octokit/rest": "^18.7.2"
   }
 }
