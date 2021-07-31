@@ -23,6 +23,11 @@ function activate(context) {
             'You Suck!',
             'Code? More like smode.',
             'You code your mother with that mouth?',
+            'N00b',
+            '/dev/null',
+            'STFU()',
+            'Cringe ();',
+            'u.canSuckIt = true;'
         ]
 
         if (!editor) {
