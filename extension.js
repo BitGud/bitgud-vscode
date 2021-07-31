@@ -17,11 +17,34 @@ function activate(context) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('bitgud.helloWorld', function () {
+	let disposable = vscode.commands.registerCommand('bitgud.insult', function () {
 		// The code you place here will be executed every time your command is executed
 
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from bitgud !');
+        const editor = vscode.window.activeTextEditor;
+
+        const insults = [
+            'You Suck!',
+            'Code? More like smode.',
+            'You code your mother with that mouth?',
+        ]
+
+        if (!editor) {
+            console.error("no document open");
+            return;
+        }
+
+        const document = editor.document;
+        const edit = new vscode.WorkspaceEdit();
+
+		// Just replace the entire document every time for this example extension.
+		// A more complete extension should compute minimal edits instead.
+		edit.replace(
+			document.uri,
+			new vscode.Range(0, 0, document.lineCount, 0),
+            insults[Math.floor(Math.random()*insults.length)]
+        );
+
+		return vscode.workspace.applyEdit(edit);
 	});
 
 	context.subscriptions.push(disposable);

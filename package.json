@@ -10,14 +10,14 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:bitgud.helloWorld"
+    "onCommand:bitgud.insult"
   ],
   "main": "./extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "bitgud.helloWorld",
-        "title": "Hello World"
+        "command": "bitgud.insult",
+        "title": "Insult"
       }
     ]
   },
