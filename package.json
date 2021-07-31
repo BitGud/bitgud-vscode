@@ -1,7 +1,8 @@
 {
   "name": "bitgud",
   "displayName": "bitgud ",
-  "description": "",
+  "description": "hackathon app, probably a virus",
+  "publisher": "bob",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.58.0"
