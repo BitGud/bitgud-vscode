@@ -22,11 +22,17 @@ Written with:
 ## Images:
 
 Login with GitHub on Welcome
-[!](images/login.png)
+
+![](images/login.png)
+
 Sidebar Buttons
-[!](images/commands.png)
+
+![](images/commands.png)
+
 Commands
-[!](images/cmd.png)
+
+![](images/cmd.png)
+
 
 ## Running Locally
 
