@@ -1,9 +1,10 @@
 {
   "name": "bitgud",
-  "displayName": "bitgud ",
+  "displayName": "bitgud",
   "description": "hackathon app, probably a virus",
-  "publisher": "bob",
+  "publisher": "bitgud",
   "version": "0.0.1",
+  "repository": "https://github.com/BitGud/bitgud-vscode",
   "engines": {
     "vscode": "^1.58.0"
   },
