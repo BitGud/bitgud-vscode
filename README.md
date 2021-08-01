@@ -2,6 +2,8 @@
 
 WDCC x SESA Hackathon 2021 💻
 
+Download Here: https://marketplace.visualstudio.com/items?itemName=bitgud.bitgud
+
 Fully opensource BitGud VS Code Extension used to insult users based on their settings in [BitGud](https://noisy-firefly-1302.on.fleek.co/#/)
 
 Designed to allow users to customise easily.
