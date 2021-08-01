@@ -5,6 +5,7 @@
   "publisher": "bitgud",
   "version": "0.0.1",
   "repository": "https://github.com/BitGud/bitgud-vscode",
+  "icon": "https://cdn.discordapp.com/attachments/867331750069403651/871213075989147689/bf6564a9-2d49-4949-87e2-43c2dcf1d592.png",
   "engines": {
     "vscode": "^1.58.0"
   },
