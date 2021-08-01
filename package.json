@@ -20,32 +20,41 @@
     "commands": [
       {
         "command": "bitgud.insult",
-        "title": "Insult"
+        "title": "BitGud: Insult"
+      },
+      {
+        "command": "bitgud.help",
+        "title": "BitGud: Open Website"
       },
       {
         "command": "bitgud.authenticate",
-        "title": "Auth"
+        "title": "BitGud: Github OAuth Login"
       }
     ],
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "bitgud-container",
+          "id": "bitgud-explorer",
           "title": "Bitgud",
           "icon": "BitGud.svg"
         }
       ]
     },
     "views": {
-      "bitgud-container": [
+      "bitgud-explorer": [
         {
           "id": "bitgud-view",
           "name": "BitGud",
-          "icon": "BitGud.svg",
-          "contextualTitle": "LogIn"
+          "icon": "BitGud.svg"
         }
       ]
-    }
+    },
+    "viewsWelcome": [
+      {
+        "view": "bitgud-view",
+        "contents": "No login found [learn more](https://noisy-firefly-1302.on.fleek.co/).\n[Github Login](command:bitgud.authenticate)"
+      }
+    ]
   },
   "scripts": {
     "lint": "eslint .",
@@ -66,6 +75,7 @@
   "dependencies": {
     "@octokit/rest": "^18.7.2",
     "axios": "^0.21.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "socket.io-client": "^4.1.3"
   }
 }
